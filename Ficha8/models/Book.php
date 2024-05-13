@@ -1,10 +1,4 @@
-
 <?php
-
-require 'vendor/autoload.php';
-
-use Carbon\Carbon;
-
 class Book extends \ActiveRecord\Model
 {
     static $validates_presence_of = array(
@@ -12,4 +6,3 @@ class Book extends \ActiveRecord\Model
         array('isbn', 'message' => 'It must be provided')
     );
 }
-?>

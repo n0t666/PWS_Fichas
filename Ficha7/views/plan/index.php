@@ -1,4 +1,4 @@
-<form action="index.p" method="post">
+<form action="index.php?c=plan&a=calculate" method="post">
     <label for="credito">Valor do crédito:</label><br>
     <input type="number" name="credito" id="credito"><br>
     <label for="numPrest">Número de prestações:</label><br>

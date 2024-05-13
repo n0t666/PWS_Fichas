@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $user = $_POST['username'];
     $pass = $_POST['pwd'];
     if (checkAuth($user, $pass)) {
-        header(header: 'Location: controlador.php');
+        header('Location: controlador.php');
     } else {
         require_once '../views/login.php';
     }

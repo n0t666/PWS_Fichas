@@ -2,7 +2,6 @@
     <?php
     require '../vendor/autoload.php';
     require '../models/modeloplano.php';
-
     require_once '../models/auth.php';
 
     use Carbon\Carbon;
@@ -13,8 +12,6 @@
         } else {
 
             require_once '../models/modeloplano.php';
-
-
 
             $valor = $_POST['credito'];
             $numPagamentos =  $_POST['numPrest'];

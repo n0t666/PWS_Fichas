@@ -40,4 +40,4 @@ striped">
             <a href="index.php?c=book&a=create" class="btn btn-info" role="button">New</a>
         </p>
     </div>
-</div> <!-- /row -->
+</div>

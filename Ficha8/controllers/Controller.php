@@ -1,5 +1,8 @@
 <?php
 
+require_once 'models/auth.php';
+
+
 class Controller
 {
     protected function redirectToRoute($controllerPrefix, $action, $params = [])
@@ -49,5 +52,12 @@ class Controller
     protected function hasHTTPGetParam($key)
     {
         return isset($_GET[$key]);
+    }
+
+    protected function authenticationFilter()
+    {
+        if (!isLoggedIn()) {
+            header('Location:' . INVALID_ACCESS_ROUTE);
+        }
     }
 }

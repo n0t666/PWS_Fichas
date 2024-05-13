@@ -1,28 +1,27 @@
-<body>
-    <h1>Plano de pagamento</h1>
-    <h4>Valor a contrair: <?= number_format($valor, 2) ?></h4>
-    <h4>Número de prestações: <?= $numPagamentos ?></h4>
-    <h4>Data do empréstimo: <?= $currentTime ?></h4>
+<h1>Plano de pagamento</h1>
+<h4>Valor a contrair: <?= number_format($valor, 2) ?></h4>
+<h4>Número de prestações: <?= $numPagamentos ?></h4>
+<h4>Data do empréstimo: <?= $planoPagamento['currentDate'] ?></h4>
 
-    <table border="1">
-        <tr style="background-color: lightgray;">
-            <th>Nº Prest</th>
-            <th>Data</th>
-            <th>Valor Prest.</th>
-            <th>Valor em Dívida</th>
-        </tr>
+<table border="1">
+    <tr style="background-color: lightgray;">
+        <th>Nº Prest</th>
+        <th>Data</th>
+        <th>Valor Prest.</th>
+        <th>Valor em Dívida</th>
+    </tr>
 
-        <?php
+    <?php
 
-        for ($i = 0; $i < $numLinhas; $i++) {
-            echo '<tr>';
-            echo '<td style="background-color: lightgray">' . ($i + 1) . '</td>';
-            for ($j = 0; $j < $numColunas; $j++) {
-                echo '<td>' . $planoPagamento[$i][$j] . '</td>';
-            }
+    for ($i = 0; $i < $numPagamentos; $i++) {
+        echo '<tr>';
+        echo '<td style="background-color: lightgray">' . ($i + 1) . '</td>';
+        for ($j = 0; $j < 3; $j++) {
+            echo '<td>' . $planoPagamento[$i][$j] . '</td>';
         }
-        ?>
+    }
+    ?>
 
-    </table>
-    <p>O valor da despesa do crédito é de <?= number_format($custo, 2) . "€ e encontra-se incluída na primeira prestação " ?></p>
-    <a href="../controllers/logoutController.php">Logout</a>
+</table>
+<p>O valor da despesa do crédito é de <?= number_format($planoPagamento['cost'], 2) . "€ e encontra-se incluída na primeira prestação " ?></p>
+<a href="index.php?c=auth&a=logout">Logout</a>

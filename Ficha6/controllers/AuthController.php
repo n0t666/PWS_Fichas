@@ -1,5 +1,6 @@
 <?php
 
+require_once 'models/auth.php';
 
 class AuthController
 {
@@ -13,5 +14,17 @@ class AuthController
     {
         $user = $_POST['username'];
         $pass = $_POST['pwd'];
+
+        if (checkAuth($user, $pass)) {
+            header('Location:index.php?c=plan&a=index');
+        } else {
+            require_once 'views/auth/index.php';
+        }
+    }
+
+    public function logout()
+    {
+        session_destroy();
+        header('Location:index.php');
     }
 }

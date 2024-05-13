@@ -22,6 +22,7 @@ function isLoggedIn()
 }
 
 
+
 function logout()
 {
     session_destroy();

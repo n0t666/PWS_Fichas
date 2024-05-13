@@ -1,12 +1,20 @@
 
 <?php
 
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
+require_once 'models/Plan.php';
 
 use Carbon\Carbon;
 
 class PlanController
 {
+    function __construct()
+    {
+        if (!isLoggedIn()) {
+            header('Location:index.php');
+        }
+    }
+
     public function index()
     {
         require_once 'views/plan/index.php';
@@ -19,7 +27,7 @@ class PlanController
         $plan = new Plan();
         $planoPagamento = $plan->calculaPlano($valor, $numPagamentos);
 
-        require '/views/show.php';
+        require 'views/plan/show.php';
     }
 }
 ?>
