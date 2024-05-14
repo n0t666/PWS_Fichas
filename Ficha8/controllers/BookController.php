@@ -11,16 +11,19 @@ class BookController extends Controller
         $this->renderView('book', 'index', ['books' => $books]);
     }
 
-    public function edit()
+    public function edit($id)
     {
-        $id = $_GET['id'];
-        $book = Book::find($id);
-        $this->renderView('book', 'edit', ['book' => $book]);
+        try {
+            $book = Book::find($id);
+            $this->renderView('book', 'edit', ['book' => $book]);
+        } catch (ActiveRecord\RecordNotFound $e) {
+            echo 'Caught exception: ' . $e->getMessage();
+            die();
+        }
     }
 
-    public function show()
+    public function show($id)
     {
-        $id = $_GET['id'];
         $book = Book::find($id);
         $this->renderView('book', 'show', ['book' => $book]);
     }
@@ -35,10 +38,33 @@ class BookController extends Controller
         $book = new Book($this->getHTTPPost());
         if ($book->is_valid()) {
             $book->save();
-            $this->renderView('book', 'index');
+            $this->redirectToRoute('book', 'index');
         } else {
-            //mostrar vista create passando o modelo como parâmetro
             $this->renderView('book', 'create', ['book' => $book]);
+        }
+    }
+
+    public function delete($id)
+    {
+        try {
+            $book = Book::find($id);
+            $book->delete();
+        } catch (ActiveRecord\RecordNotFound $e) {
+            $this->renderView('errors', 'notFound');
+        }
+    }
+
+    public function update($id)
+    {
+        try {
+            $book = Book::find($id);
+            $book->update_attributes($this->getHTTPPost());
+            $book->save();
+        } catch (ActiveRecord\RecordNotFound $e) {
+            echo 'Caught exception: ' . $e->getMessage();
+            die();
+        } finally {
+            $this->redirectToRoute('book', 'index');
         }
     }
 }

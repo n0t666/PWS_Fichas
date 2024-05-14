@@ -20,6 +20,11 @@ return [
     'book' => [
         'index' => ['GET', 'BookController', 'index'],
         'edit' => ['GET', 'BookController', 'edit'],
+        'show' => ['GET', 'BookController', 'show'],
+        'create' => ['GET', 'BookController', 'create'],
+        'store' => ['POST', 'BookController', 'store'],
+        'delete' => ['GET', 'BookController', 'delete'],
+        'update' => ['POST', 'BookController', 'update']
     ]
 
 ];

@@ -1,6 +1,5 @@
-options -indexes
-order deny,allow
-deny from all
+Require all denied
+
 <Files "index.php">
-allow from all
+Require all granted
 </Files>

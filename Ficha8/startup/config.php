@@ -1,7 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 
-define('APP_NAME', 'Credit App');
+define('APP_NAME', 'Book App');
 define('INVALID_ACCESS_ROUTE', 'c=auth&a=login');
 
 ActiveRecord\Config::initialize(function ($cfg) {
