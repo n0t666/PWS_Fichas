@@ -17,8 +17,15 @@
                                                                                                                 echo $book->isbn;
                                                                                                             } ?>">
             <?php
-            if (isset($book->errors) && $book->errors->on('isbn')) {
-                echo "<div class='alert alert-danger mt-2' role='alert'>" . $book->errors->on('isbn') . "</div>";
+            if (isset($book->errors)) {
+                if (is_array($book->errors->on('isbn'))) {
+                    foreach ($book->errors->on('isbn') as $error) {
+
+                        echo "<div class='alert alert-danger mt-2' role='alert'>" . $error . "</div>";
+                    }
+                } else {
+                    echo "<div class='alert alert-danger mt-2' role='alert'>" . $book->errors->on('isbn') . "</div>";
+                }
             }
             ?>
         </div>
