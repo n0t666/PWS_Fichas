@@ -18,7 +18,16 @@
             }
             ?>
         </div>
-        <button type="submit" class="btn btn-primary w-100 text-uppercase">editar</button>
+        <div class="mb-3">
+            <label for="genre_id" class="form-label">Genre</label>
+            <select class="form-select mb-3" name="genre_id" required>
+                <?php foreach ($genres as $genre) { ?>
+                    <option value="<?= $genre->id ?>" <?php if ($genre->id == $book->genre_id) {
+                                                            echo 'selected';
+                                                        } ?>><?= $genre->name; ?></option>
+                <?php } ?>
+            </select>
+            <button type="submit" class="btn btn-primary w-100 text-uppercase">editar</button>
     </form>
     <a class="btn btn-primary w-100 text-uppercase mt-2" href="index.php?c=book&a=index">voltar atrás</a>
 </div>

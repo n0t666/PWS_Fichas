@@ -17,6 +17,10 @@
                             <td>ISBN</td>
                             <td><?= $book->isbn ?></td>
                         </tr>
+                        <tr>
+                            <td>Genre</td>
+                            <td><?= $book->genre->name ?></td>
+                        </tr>
 
                     </tbody>
                 </table>

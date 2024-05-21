@@ -14,11 +14,12 @@ class BookController extends Controller
 
     public function edit($id)
     {
+        $genres = Genre::all();
         try {
             $book = Book::find($id);
-            $this->renderView('book', 'edit', ['book' => $book]);
+            $this->renderView('book', 'edit', ['book' => $book, 'genres' => $genres]);
         } catch (ActiveRecord\RecordNotFound $e) {
-            echo 'Caught exception: ' . $e->getMessage();
+            $this->renderView('errors', 'notFound');
             die();
         }
     }
@@ -39,11 +40,13 @@ class BookController extends Controller
     public function store()
     {
         $book = new Book($this->getHTTPPost());
+
         if ($book->is_valid()) {
             $book->save();
             $this->redirectToRoute('book', 'index');
         } else {
-            $this->renderView('book', 'create', ['book' => $book]);
+            $genres = Genre::all();
+            $this->renderView('book', 'create', ['book' => $book, 'genres' => $genres]);
         }
     }
 
@@ -55,6 +58,7 @@ class BookController extends Controller
         } catch (ActiveRecord\RecordNotFound $e) {
             $this->renderView('errors', 'notFound');
         }
+        $this->redirectToRoute('book', 'index');
     }
 
     public function update($id)
@@ -64,7 +68,7 @@ class BookController extends Controller
             $book->update_attributes($this->getHTTPPost());
             $book->save();
         } catch (ActiveRecord\RecordNotFound $e) {
-            echo 'Caught exception: ' . $e->getMessage();
+            $this->renderView('errors', 'notFound');
             die();
         } finally {
             $this->redirectToRoute('book', 'index');

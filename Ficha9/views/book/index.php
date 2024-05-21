@@ -30,6 +30,8 @@ striped">
                             <td><?= $book->genre->name ?></td>
                             <td>
                                 <a href="index.php?c=book&a=show&id=<?= $book->id ?>" class="btn btn-info" role="button">Show</a>
+                                <a href="index.php?c=chapter&a=index&id=<?= $book->id ?>" class="btn
+btn-info" role="button">Chapters</a>
                                 <a href="index.php?c=book&a=edit&id=<?= $book->id ?>" class="btn btn-info" role="button">Edit</a>
                                 <a href="index.php?c=book&a=delete&id=<?= $book->id ?>" class="btn btn-warning" role="button">Delete</a>
                             </td>

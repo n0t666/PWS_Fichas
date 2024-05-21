@@ -31,12 +31,17 @@
         </div>
         <div class="mb-3">
             <label for="genre_id" class="form-label">Genre</label>
-            <select class="form-select" name="genre_id">
+            <select class="form-select" name="genre_id" required>
                 <?php foreach ($genres as $genre) { ?>
                     <option value="<?= $genre->id ?>"><?= $genre->name; ?></option>
                 <?php } ?>
             </select>
         </div>
+        <?php
+        if (isset($book->errors) && $book->errors->on('genre')) {
+            echo "<div class='alert alert-danger mt-2' role='alert'>" . $book->errors->on('genre') . "</div>";
+        }
+        ?>
         <button type="submit" class="btn btn-primary w-100 text-uppercase">submit</button>
     </form>
 </div>

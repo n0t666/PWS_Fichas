@@ -17,7 +17,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php?c=auth&a=index">Login</a>
+                        <a class="nav-link " href="index.php?c=auth&a=index">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?c=book&a=index">Books</a>
                     </li>
                 </ul>
             </div>
