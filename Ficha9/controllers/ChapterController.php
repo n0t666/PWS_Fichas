@@ -7,9 +7,13 @@ class ChapterController extends Controller
 {
     public function index($id)
     {
-        $book = Book::find($id);
-        $this->renderView('chapter', 'index', ['book' =>
-        $book]);
+        try {
+            $book = Book::find($id);
+            $this->renderView('chapter', 'index', ['book' =>
+            $book]);
+        } catch (ActiveRecord\RecordNotFound $e) {
+            $this->renderView('errors', 'notFound');
+        }
     }
 
     public function create($id)
@@ -32,9 +36,49 @@ class ChapterController extends Controller
 
     public function delete($id)
     {
-        $chapter = Chapter::find($id);
-        $book_id = $chapter->book_id;
-        $chapter->delete();
-        $this->redirectToRoute('chapter', 'index', ['id' => $book_id]);
+        try {
+            $chapter = Chapter::find($id);
+            $book_id = $chapter->book_id;
+            $chapter->delete();
+            $this->redirectToRoute('chapter', 'index', ['id' => $book_id]);
+        } catch (ActiveRecord\RecordNotFound $e) {
+            $this->renderView('errors', 'notFound');
+        }
+    }
+
+    public function show($id)
+    {
+        try {
+            $chapter = Chapter::find($id);
+            $this->renderView('chapter', 'show', ['chapter' =>
+            $chapter]);
+        } catch (ActiveRecord\RecordNotFound $e) {
+            $this->renderView('errors', 'notFound');
+        }
+    }
+
+    public function edit($id)
+    {
+        try {
+            $chapter = Chapter::find($id);
+            $this->renderView('chapter', 'edit', ['chapter' =>
+            $chapter]);
+        } catch (ActiveRecord\RecordNotFound $e) {
+            $this->renderView('errors', 'notFound');
+        }
+    }
+
+    public function update($id)
+    {
+        try {
+            $chapter = Chapter::find($id);
+            $book_id = $chapter->book_id;
+            $chapter->update_attributes($this->getHTTPPost());
+            $chapter->save();
+            $this->redirectToRoute('chapter', 'index', ['id' => $chapter->book_id]);
+        } catch (ActiveRecord\RecordNotFound $e) {
+            $this->renderView('errors', 'notFound');
+            die();
+        }
     }
 }
