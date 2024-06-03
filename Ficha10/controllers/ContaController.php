@@ -28,6 +28,9 @@ class ContaController extends Controller
         }
 
         $conta = new Conta($data);
+
+
+
         if ($conta->is_valid()) {
             $conta->save();
             $this->redirectToRoute('conta', 'index');
@@ -41,6 +44,41 @@ class ContaController extends Controller
         try {
             $conta = Conta::find($id);
             $conta->delete();
+            $this->redirectToRoute('conta', 'index');
+        } catch (ActiveRecord\RecordNotFound $e) {
+            $this->renderView('errors', 'notFound');
+            die();
+        }
+    }
+
+    public function show($id)
+    {
+        try {
+            $conta = Conta::find($id);
+            $this->renderView('conta', 'show', ['conta' => $conta]);
+        } catch (ActiveRecord\RecordNotFound $e) {
+            $this->renderView('errors', 'notFound');
+            die();
+        }
+    }
+
+    public function edit($id)
+    {
+        try {
+            $conta = Conta::find($id);
+            $this->renderView('conta', 'edit', ['conta' => $conta]);
+        } catch (ActiveRecord\RecordNotFound $e) {
+            $this->renderView('errors', 'notFound');
+            die();
+        }
+    }
+
+    public function update($id)
+    {
+        try {
+            $book = Conta::find($id);
+            $book->update_attributes($this->getHTTPPost());
+            $book->save();
             $this->redirectToRoute('conta', 'index');
         } catch (ActiveRecord\RecordNotFound $e) {
             $this->renderView('errors', 'notFound');

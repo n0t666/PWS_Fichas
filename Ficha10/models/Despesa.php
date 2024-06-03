@@ -5,12 +5,12 @@
 class Despesa extends ActiveRecord\Model
 {
     static $has_one = array(
-        array('Categoria'),
-        array('MetodoPagamento'),
+        array('categoria'),
+        array('metodopagamento'),
     );
 
     static $belongs_to = array(
-        array('Conta')
+        array('conta')
     );
 
     static  $validates_numericality_of = array(

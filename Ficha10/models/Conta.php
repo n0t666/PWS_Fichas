@@ -5,7 +5,7 @@ class Conta extends \ActiveRecord\Model
 
     static $validates_presence_of = array(
         array('numconta', 'message' => 'O número da conta deve ser fornecido'),
-        array('titulo', 'message' => 'O titulo deve ser fornecido'),
+        array('titular', 'message' => 'O titular deve ser fornecido'),
         array('nib', 'message' => 'A NIB deve ser fornecido')
     );
 

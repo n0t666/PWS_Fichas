@@ -13,7 +13,7 @@ striped">
                         <h3>Número da conta</h3>
                     </th>
                     <th>
-                        <h3>Título</h3>
+                        <h3>Titular</h3>
                     </th>
                     <th>
                         <h3>NIB</h3>
@@ -30,12 +30,12 @@ striped">
                         <tr>
                             <td><?= $conta->id ?></td>
                             <td><?= $conta->numconta ?></td>
-                            <td><?= $conta->titulo ?></td>
+                            <td><?= $conta->titular ?></td>
                             <td><?= $conta->nib ?></td>
                             <td><?= $conta->email ?></td>
                             <td>
                                 <a href="index.php?c=conta&a=show&id=<?= $conta->id ?>" class="btn btn-info" role="button">Mostrar</a>
-                                <a href="index.php?c=conta&a=show&id=<?= $conta->id ?>" class="btn btn-info" role="button">Contas</a>
+                                <a href="index.php?c=despesa&a=index&id=<?= $conta->id ?>" class="btn btn-info" role="button">Despesas</a>
                                 <a href="index.php?c=conta&a=edit&id=<?= $conta->id ?>" class="btn btn-info" role="button">Editar</a>
                                 <a href="index.php?c=conta&a=delete&id=<?= $conta->id ?>" class="btn btn-dark" role="button">Apagar</a>
                             </td>

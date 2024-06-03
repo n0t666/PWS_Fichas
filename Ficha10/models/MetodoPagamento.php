@@ -1,10 +1,10 @@
 <?php
 
 
-class MetodoPagamento extends ActiveRecord\Model
+class Metodopagamento extends ActiveRecord\Model
 {
     static $belongs_to = array(
-        array('Despesa')
+        array('despesa')
     );
 
     static $validates_length_of = array(

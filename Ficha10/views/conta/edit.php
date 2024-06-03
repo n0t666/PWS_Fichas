@@ -1,5 +1,5 @@
 <div class="container">
-    <form method="POST" action="index.php?c=conta&a=store">
+    <form method="POST" action="index.php?c=conta&a=update&id=<?= $conta->id; ?>">
         <div class="row mb-3">
             <label for="inputNumConta" class="col-sm-2 col-form-label">Número da conta:</label>
             <div class="col-sm-10">
