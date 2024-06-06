@@ -15,25 +15,32 @@ striped">
                     </th>
                     <th>
                         <h3>Data</h3>
-                    <th>
+                    </th>
                     <th>
                         <h3>Valor</h3>
+                    </th>
                     <th>
+                        <h3>Descrição</h3>
+                    </th>
                     <th>
-                        <h3>Descriçãp</h3>
+                        <h3>Pagamento</h3>
+                    </th>
+                    <th>
+                        <h3>Categoria</h3>
+                    </th>
                     <th>
                         <h3>User Actions</h3>
                     </th>
                 </thead>
                 <tbody>
                     <?php foreach ($conta->despesas as $despesa) { ?>
-                        <?php var_dump($despesa);
-                        exit(); ?>
                         <tr>
                             <td><?= $despesa->id ?></td>
-                            <td><?= $despesa->data ?></td>
+                            <td><?= date_format($despesa->date, 'Y-m-d H:i:s'); ?></td>
                             <td><?= $despesa->valor ?></td>
                             <td><?= $despesa->descricao ?></td>
+                            <td><?= $despesa->metodopagamento->nome ?></td>
+                            <td><?= $despesa->categoria->nome ?></td>
                             <td>
                                 <a href="index.php?c=despesa&a=show&id=<?= $despesa->id ?>" class="btn btn-info" role="button">Show</a>
                                 <a href="index.php?c=despesa&a=edit&id=<?= $despesa->id ?>" class="btn btn-info" role="button">Edit</a>
